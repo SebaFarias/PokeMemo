@@ -1,9 +1,13 @@
-import { type NextPage } from "next";
+import { Metadata, type NextPage } from "next";
 import AuthShowcase from "~/components/AuthShowcase";
 import GamePromo from "~/components/NewsBanners/GamePromo";
 
 interface HomeProps {
 
+}
+
+export const metadata: Metadata ={
+  title:'Pokememo'
 }
 
 const Home: NextPage<HomeProps> = (props) => {
