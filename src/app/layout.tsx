@@ -13,7 +13,9 @@ export default function RootLayout ({
       <body>
         <PokeSessionProvider>
           <AppBar/>
-          {children}
+          <main className="min-h-[90vh] flex">
+            {children}
+          </main>
           <PokeFooter/>
         </PokeSessionProvider>
       </body>

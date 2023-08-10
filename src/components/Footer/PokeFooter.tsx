@@ -4,7 +4,7 @@ export interface PokeFooterProps {
 
 const PokeFooter: React.FunctionComponent<PokeFooterProps> = props => {
   return(
-    <footer>
+    <footer className="min-h-[10vh]">
       footer
     </footer>
   )
