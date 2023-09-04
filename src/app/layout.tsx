@@ -1,6 +1,7 @@
 import AppBar from "~/components/AppBar/AppBar";
 import PokeFooter from "~/components/Footer/PokeFooter";
-import PokeSessionProvider from "~/components/PokeSessionProvider";
+import UserSessionProvider from "~/components/UserSessionProvider";
+import { PokeContextProvider } from "~/components/PokeSessionContext";
 import "~/styles/globals.css";
 
 export default function RootLayout ({
@@ -11,13 +12,15 @@ export default function RootLayout ({
   return(
     <html lang="en">
       <body>
-        <PokeSessionProvider>
+        <UserSessionProvider>
+        <PokeContextProvider>
           <AppBar/>
           <main className="min-h-[90vh] flex">
             {children}
           </main>
           <PokeFooter/>
-        </PokeSessionProvider>
+        </PokeContextProvider>
+        </UserSessionProvider>
       </body>
     </html>
   )

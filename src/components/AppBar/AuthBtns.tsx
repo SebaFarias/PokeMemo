@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react"
 import SessionLoader from "./SessionLoader"
 
 export interface AuthBtnsProps {
-
+  
 }
 
 const AuthBtns:React.FunctionComponent<AuthBtnsProps> = props => {

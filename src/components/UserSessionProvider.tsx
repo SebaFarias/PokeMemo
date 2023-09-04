@@ -1,9 +1,8 @@
 'use client'
 
 import { SessionProvider } from "next-auth/react"
-import { Children } from "react"
 
-const PokeSessionProvider = ({children}:{ children: React.ReactNode }) => {
+const UserSessionProvider = ({children}:{ children: React.ReactNode }) => {
   return(
     <SessionProvider>
       {children}
@@ -11,4 +10,4 @@ const PokeSessionProvider = ({children}:{ children: React.ReactNode }) => {
   )
 }
 
-export default PokeSessionProvider
+export default UserSessionProvider
