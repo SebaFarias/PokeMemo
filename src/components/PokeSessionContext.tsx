@@ -1,11 +1,11 @@
 'use client'
 
 import { Dispatch, PropsWithChildren, SetStateAction, createContext, useMemo, useState } from "react"
+import { Card, IdMatrix } from "~/model/boardMatrix/IdMatrix"
 import { Timer } from '~/model/time/Timer'
-import { IdMatrix } from "~/model/boardMatrix/IdMatrix"
 
 export interface PokeContext{
-  data: number[][],
+  data: Card[][],
   rows: number,
   columns: number,
   blocked: boolean,
@@ -16,7 +16,7 @@ export interface PokeContext{
 }
 
 const defaultState:PokeContext = {
-  data: new IdMatrix(3,5).getMatrix(),
+  data: new IdMatrix(3,5).getDisplayMatrix(),
   rows: 3,
   columns: 5,
   blocked: false,
