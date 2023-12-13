@@ -4,12 +4,16 @@ import { CardState } from '~/model/boardMatrix/IdMatrix'
 import { PokeMemoMatrix, Position } from '~/model/boardMatrix/PokeMemoMatrix'
 
 export const usePokeSessionContext = () => {
-  const [ state, controller ] = useContext(PokeContext)
+  const context = useContext(PokeContext)
+  const { status, controller } = context
 
-  if(state===undefined){
+  if(context===undefined){
     throw new Error('usePokeContext must be within PokeSessionContext provider')
   }
   const matrixController = {
+    initialize: () => {
+      controller?.reset()
+    },
     setRows: ( newValue:number ) => {
     },
     setCols: ( newValue:number ) => {
@@ -36,5 +40,5 @@ export const usePokeSessionContext = () => {
     }
 
   }
-  return { state , matrixController }
+  return { status , matrixController }
 }

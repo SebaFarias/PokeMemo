@@ -2,19 +2,30 @@
 
 import { usePokeSessionContext } from "~/hooks/usePokeContext"
 import Card from "./Card"
-import { useState } from "react"
 
 export interface BoardProps{}
 
-const Board: React.FunctionComponent<BoardProps> = props => {
-const { state, matrixController } = usePokeSessionContext()
-const [ distribution, setDistribution ] = useState<[string,string]>([`grid-rows-${state.rows}`,`grid-cols-${state.cols}`])
+const getClasses = (rows:number,cols:number) => {
+  let classes = ""
+  if(typeof rows === 'undefined' || typeof cols === 'undefined') return ''
+  if(rows < 13 && rows > 0) classes += `grid-rows-${rows} `
+  if(cols < 13 && cols > 0) classes += `grid-cols-${cols} `
+  return classes
+}
+
+const Board: React.FunctionComponent<BoardProps> = ( ) => {
+const { status, matrixController } = usePokeSessionContext()
+
+const onCardClick = (row:number,col:number) => {
+  console.log(row,col)
+}
 
 return <ul
-  className={`grid ${distribution[0]} ${distribution[1]} justify-items-center items-center w-[85vmin] h-[85vmin]`}
+  className={`grid ${getClasses(status!.rows,status!.cols)} justify-items-center items-center w-[85vmin] h-[85vmin]`}
 >
-{state.matrix.getMatrix().map((row,rowIndx)=>row.map((card,colIndx)=><Card 
+{status?.matrix.getMatrix().map((row,rowIndx)=>row.map((card,colIndx)=><Card 
     key={`${rowIndx}-${colIndx}`}
+    handleClick={onCardClick}
     card={card}
     row={rowIndx}
     col={colIndx}
