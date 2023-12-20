@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 import PokeContextProvider  from '~/app/_contexts/PokeContext/Provider'
 import { TRPCReactProvider } from "~/trpc/react";
+import { defaultPokeState } from "./_contexts/PokeContext";
 
 const inter = Inter({
   subsets: ["latin"],
