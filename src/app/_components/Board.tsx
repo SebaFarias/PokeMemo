@@ -1,9 +1,13 @@
 "use client"
 
-import { usePokeSessionContext } from "~/hooks/usePokeContext"
+import { useStore } from "~/store"
 import Card from "./Card"
+import { useEffect } from "react"
+import { Card as PokeCard } from "~/model/boardMatrix/PokeMemoMatrix"
 
-export interface BoardProps{}
+export interface BoardProps{
+}
+
 
 const getClasses = (rows:number,cols:number) => {
   let classes = ""
@@ -13,17 +17,18 @@ const getClasses = (rows:number,cols:number) => {
   return classes
 }
 
-const Board: React.FunctionComponent<BoardProps> = ( ) => {
-const { status, matrixController } = usePokeSessionContext()
+const Board: React.FunctionComponent<BoardProps> = () => {
+
+  const matrix = useStore().matrix
 
 const onCardClick = (row:number,col:number) => {
   console.log(row,col)
 }
 
 return <ul
-  className={`grid ${getClasses(status!.rows,status!.cols)} justify-items-center items-center w-[85vmin] h-[85vmin]`}
+  className={`grid grid-rows-3 grid-cols-4 justify-items-center items-center w-[85vmin] h-[85vmin]`}
 >
-{status?.matrix.getMatrix().map((row,rowIndx)=>row.map((card,colIndx)=><Card 
+{matrix && matrix.map((row,rowIndx)=>row.map((card,colIndx)=><Card 
     key={`${rowIndx}-${colIndx}`}
     handleClick={onCardClick}
     card={card}
